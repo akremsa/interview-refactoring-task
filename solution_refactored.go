@@ -197,7 +197,7 @@ func (h *HTTPHandler) HandleSaveData(w http.ResponseWriter, r *http.Request) {
 	// Read and parse request
 	body, err := io.ReadAll(r.Body)
 	if err != nil {
-		http.Error(w, "Failed to read body", http.StatusBadRequest)
+		http.Error(w, "Failed to read body",  http.StatusInternalServerError)
 		return
 	}
 	defer r.Body.Close()
@@ -205,7 +205,7 @@ func (h *HTTPHandler) HandleSaveData(w http.ResponseWriter, r *http.Request) {
 	var req SaveRequest
 	err = json.Unmarshal(body, &req)
 	if err != nil {
-		http.Error(w, "Invalid JSON format", http.StatusBadRequest)
+		http.Error(w, "Invalid JSON format",  http.StatusInternalServerError)
 		return
 	}
 

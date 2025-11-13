@@ -97,7 +97,6 @@ func (h *DataHandler) HandleSaveData(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Hard-coded response - not flexible
 	w.WriteHeader(http.StatusOK)
 	w.Write([]byte("Data saved successfully"))
 }
